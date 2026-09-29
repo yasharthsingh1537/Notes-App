@@ -1,0 +1,41 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+build
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+lerna-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Misc
+*.local
+.eslintcache
+coverage
+
+# MongoDB
+*.local
+data/
+mongod.log   
