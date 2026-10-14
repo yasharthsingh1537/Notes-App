@@ -3,7 +3,8 @@ import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import env from "dotenv";
-import { conenctDB, disconnectDB } from "./config/db.js";
+import { connectDB, disconnectDB } from "./config/db.js";
+import authRoute from "./routes/auth.route.js";
 
 env.config();
 
@@ -19,6 +20,7 @@ app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 app.get("/api/health", (_req: express.Request, res: express.Response) => {
     return res.json({ message: "Server is running perfectly fine!" });
 });
+app.use('/api/auth', authRoute);
 
 // 404 catch-all route
 app.use((_req: express.Request, res: express.Response) => {
@@ -40,7 +42,7 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
 const PORT = Number(process.env.PORT) || 3000;
 
 async function startServer() {
-    await conenctDB();
+    await connectDB();
 
     const server = app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
