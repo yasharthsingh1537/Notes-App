@@ -5,6 +5,7 @@ import rateLimit from "express-rate-limit";
 import env from "dotenv";
 import { connectDB, disconnectDB } from "./config/db.js";
 import authRoute from "./routes/auth.route.js";
+import noteRoute from "./routes/note.route.js";
 
 env.config();
 
@@ -21,7 +22,7 @@ app.get("/api/health", (_req: express.Request, res: express.Response) => {
   return res.json({ message: "Server is running perfectly fine!" });
 });
 app.use("/api/auth", authRoute);
-
+app.use("/api/notes", noteRoute);
 // 404 catch-all route
 app.use((_req: express.Request, res: express.Response) => {
   res.status(404).json({ message: "Route not found!" });

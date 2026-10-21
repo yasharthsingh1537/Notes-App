@@ -23,7 +23,7 @@ function getJwtSecret(): string {
 
 // helper function to generate a JWT token for a given user ID
 function generateToken(userId: string): string {
-  return jwt.sign({ userId }, getJwtSecret(), { expiresIn: "1h" });
+  return jwt.sign({ userId }, getJwtSecret(), { expiresIn: "7d" });
 }
 
 // helper function to return a public representation of a user object
